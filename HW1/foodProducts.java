@@ -5,6 +5,9 @@ public class foodProducts extends Products{
     public foodProducts(String SL){
         this.shelfLife = SL;
     }
+    public foodProducts(){
+        this("NULL");
+    }
     public String getInfo(){
         return String.format("%s\nСрок годности: %s;", super.getInfo(), shelfLife);
     }
