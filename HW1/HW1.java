@@ -9,8 +9,10 @@ public class HW1 {
         Products milk = new milk(3,15);
         Products milk2 = new milk(30);
         Products bread = new Bread("Пшено",17);
+        Products egg = new egg(12);
         System.out.println(milk.getInfo());
         System.out.println(milk2.getInfo()); 
         System.out.println(bread.getInfo()); 
+        System.out.println(egg.getInfo()); 
     }
 }
