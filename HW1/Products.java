@@ -18,6 +18,12 @@ public class Products {
         this.count = count;
         this.unitOfMeasurement = unitOfMeasurement;
     }
+    public Products(){
+        this.name = "NULL";
+        this.price = 0;
+        this.count = 0;
+        this.unitOfMeasurement = "NULL";
+    }
     public String getInfo(){
         return String.format("Наименование: %s;\nЦена: %d;\nКоличество: %d;\nЕдиница измерения: %s;", name, price, count, unitOfMeasurement);
     }
