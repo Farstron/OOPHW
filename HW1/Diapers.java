@@ -23,6 +23,6 @@ public class Diapers extends ChildenProducts{
         this(1, 3, 6, "type");
     }
     public String getInfo(){
-        return String.format("%s\nРазмер: %d;\n Минимальный вес: %d;\nМаксимальный вес: %d;\nТип: %s;\n", super.getInfo(), size, minWeight, maxWeight, type);
+        return String.format("%s\nРазмер: %d;\nМинимальный вес: %d;\nМаксимальный вес: %d;\nТип: %s;\n", super.getInfo(), size, minWeight, maxWeight, type);
     }
 }

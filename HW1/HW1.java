@@ -16,6 +16,8 @@ public class HW1 {
         productsQueue.add(new Lemonade("Лимон"));
         productsQueue.add(new Mask());
         productsQueue.add(new ToiletPaper());
+        productsQueue.add(new Diapers());
+        productsQueue.add(new Nipple());
         Info(productsQueue);
     }
 

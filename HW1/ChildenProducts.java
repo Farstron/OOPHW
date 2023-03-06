@@ -12,6 +12,6 @@ public class ChildenProducts extends Products{
         this(0, true, "NULL", 0, 0, "NULL");
     }
     public String getInfo(){
-        return String.format("%s\nМинимальный возраст: %d;\n Гипоаллергенность: %b;\n", super.getInfo(), minAge, hypoallergenicity);
+        return String.format("%s\nМинимальный возраст: %d;\nГипоаллергенность: %b;", super.getInfo(), minAge, hypoallergenicity);
     }
 }
