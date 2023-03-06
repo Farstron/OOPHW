@@ -22,6 +22,6 @@ public class Products {
         this("NULL", 0, 0, "NULL");
     }
     public String getInfo(){
-        return String.format("Наименование: %s;\nЦена: %d р.;\nКоличество на складе: %d ш.;\nЕдиница измерения: %s;", name, price, count, unitOfMeasurement);
+        return String.format("Наименование: %s;\nЦена: %d р.;\nКоличество на складе: %d шт.;\nЕдиница измерения: %s;", name, price, count, unitOfMeasurement);
     }
 }

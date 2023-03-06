@@ -1,6 +1,6 @@
 package HW1;
 
-public class Bread extends foodProducts{
+public class Bread extends FoodProducts{
     protected String type;
     protected static int index;
     static{

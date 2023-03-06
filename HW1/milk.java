@@ -1,10 +1,10 @@
 package HW1;
 
-public class milk extends foodProducts{
+public class Milk extends FoodProducts{
     protected int Fat;
     protected static int index;
     static{
-        milk.index = 0;
+        Milk.index = 0;
     }
     /**
      * Конструктор молока
@@ -15,7 +15,7 @@ public class milk extends foodProducts{
      * @param unitOfMeasurement единицы измерения количества продукта в упаковке
      * @param name название продукта
      */
-    public milk(int Fat,int count, int price, String shelfLife, String unitOfMeasurement, String name){
+    public Milk(int Fat,int count, int price, String shelfLife, String unitOfMeasurement, String name){
         super.name = name;
         super.shelfLife = shelfLife;
         super.unitOfMeasurement = unitOfMeasurement;
@@ -28,17 +28,17 @@ public class milk extends foodProducts{
      * @param Fat процент жирности
      * @param count количество на складе
      */
-    public milk(int Fat, int count){
+    public Milk(int Fat, int count){
         this(Fat, count, 75, "3 дня", "литры", String.format("Молоко %d" , ++index));
     }
     /**
      * Конструктор молока
      * @param Fat процент жирности
      */
-    public milk(int Fat){
+    public Milk(int Fat){
         this(Fat,1);
     }
-    public milk(){
+    public Milk(){
         this(0, 0);
     }
     public String getInfo(){

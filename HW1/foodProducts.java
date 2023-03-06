@@ -1,11 +1,11 @@
 package HW1;
 
-public class foodProducts extends Products{
+public class FoodProducts extends Products{
     protected String shelfLife;
-    public foodProducts(String SL){
+    public FoodProducts(String SL){
         this.shelfLife = SL;
     }
-    public foodProducts(){
+    public FoodProducts(){
         this("NULL");
     }
     public String getInfo(){

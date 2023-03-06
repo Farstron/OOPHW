@@ -1,10 +1,10 @@
 package HW1;
 
-public class egg extends foodProducts{
+public class Egg extends FoodProducts{
     protected int pack;
     protected static int index;
     static{
-    egg.index = 0;
+    Egg.index = 0;
     }
      /**
      * Конструктор яйца
@@ -15,7 +15,7 @@ public class egg extends foodProducts{
      * @param unitOfMeasurement единицы измерения количества продукта в упаковке
      * @param name название продукта
      */
-    public egg(int pack,int count, int price, String shelfLife, String unitOfMeasurement, String name){
+    public Egg(int pack,int count, int price, String shelfLife, String unitOfMeasurement, String name){
         super.name = name;
         super.shelfLife = shelfLife;
         super.unitOfMeasurement = unitOfMeasurement;
@@ -28,17 +28,17 @@ public class egg extends foodProducts{
      * @param pack количество в упаковке
      * @param count количество на складе
      */
-    public egg(int pack,int count){
+    public Egg(int pack,int count){
         this(pack, count, 80, "10 дней", "штуки", String.format("Яйца %d", ++index));
     }
     /**
      * Конструктор яйца
      * @param pack количество в упаковке
      */
-    public egg(int pack){
+    public Egg(int pack){
         this(pack, 1);
     }
-    public egg(){
+    public Egg(){
         this(0, 0);
     }
     public String getInfo(){
