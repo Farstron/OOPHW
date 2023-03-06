@@ -3,7 +3,7 @@ package HW1;
 public class HygieneItems extends Products{
     protected int pack;
     public HygieneItems(int pack,int count, int price, String unitOfMeasurement, String name){
-        super(name, price, count, "штуки");
+        super(name, price, count, unitOfMeasurement);
         this.pack = pack;
     }
     public HygieneItems(){

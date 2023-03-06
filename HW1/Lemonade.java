@@ -29,6 +29,6 @@ public class Lemonade extends Drink{
         this("NULL", 0, 0, 0, "NULL", "NULL");
     }
     public String getInfo(){
-        return String.format("%s\nВкус: %s;", super.getInfo(), taste);
+        return String.format("%s\nВкус: %s;\n", super.getInfo(), taste);
     }
 }
