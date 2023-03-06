@@ -1,22 +1,27 @@
 package HW1;
 
+import java.util.ArrayDeque;
+
 /**
  * HW1
  */
 public class HW1 {
 
     public static void main(String[] args) {
-        Products milk = new Milk(3,15);
-        Products milk2 = new Milk(30);
-        Products bread = new Bread("Пшено",17);
-        Products egg = new Egg(12);
-        Products lemonade = new Lemonade("Лимон");
-        Products mask = new Mask();
-        System.out.println(milk.getInfo());
-        System.out.println(milk2.getInfo()); 
-        System.out.println(bread.getInfo()); 
-        System.out.println(egg.getInfo()); 
-        System.out.println(lemonade.getInfo());
-        System.out.println(mask.getInfo());  
+        ArrayDeque<Products> productsQueue = new ArrayDeque<Products>();
+        productsQueue.add(new Milk(3,15));
+        productsQueue.add(new Milk(30));
+        productsQueue.add(new Bread("Пшено",17));
+        productsQueue.add(new Egg(12));
+        productsQueue.add(new Lemonade("Лимон"));
+        productsQueue.add(new Mask());
+        productsQueue.add(new ToiletPaper());
+        Info(productsQueue);
+    }
+
+    public static void Info(ArrayDeque<Products> productsQueue){
+        for(Products p : productsQueue){
+            System.out.println(p.getInfo());
+        }
     }
 }
