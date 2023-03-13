@@ -1,6 +1,6 @@
 package HW2;
 
-public class Dog extends Pet implements Petable, Trainable{
+public class Dog extends Pet implements  Trainable{
     private boolean training = false;
     public Dog(String nickName, String breed, boolean vaccinations, String color, String birthday, int height,
             int weight, String eyeColor) {

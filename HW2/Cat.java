@@ -1,6 +1,6 @@
 package HW2;
 
-public class Cat extends Pet implements Petable {
+public class Cat extends Pet {
     private boolean presenceOfWool;
     public Cat(boolean presenceOfWool, String nickName, String breed, boolean vaccinations, 
     String color, String birthday, int height, int weight, String eyeColor){
