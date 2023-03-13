@@ -15,5 +15,9 @@ public abstract class Pet extends Animal implements Petable{
         this.color = color;
         this.birthday = birthday;
     }
+    @Override
+    public String Info() {
+        return String.format("%sКличка: %s\nПорода: %s\nНаличие прививок: %b\nЦвет шерсти: %s\nДата рождения: %s\n", super.Info(),nickName,breed,vaccinations,color,birthday);
+    }
 }
 
