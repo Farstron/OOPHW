@@ -44,6 +44,10 @@ public class MyList<T> {
         listData = Arrays.copyOf(listData, size);
         listData[size-1] = initElement;
     }
+    public void add(T[] initCollection){
+        this.size +=initCollection.length;
+        merge(listData, initCollection);
+    }
     public void addByIndex (T initElement, int index){
         if (index > size) {
             add(initElement);
@@ -52,6 +56,7 @@ public class MyList<T> {
             if (index < 0) index = size+index;
             Object[] temp = Arrays.copyOfRange(listData,index,this.size);
             listData[index] = initElement;
+            listData = Arrays.copyOf(listData, size+1);
             merge(Arrays.copyOfRange(listData,0,index+1), temp);
         }
 
@@ -60,13 +65,15 @@ public class MyList<T> {
         for (int i= 0; i < array1.length;i++){
             this.listData[i] = array1[i];
         }
-        grow();
         for (int i = 0; i < array2.length; i++){
             this.listData[i+array1.length] = array2[i];
         }
         this.size = array1.length + array2.length;
     }
-    private void grow(){
-        listData = Arrays.copyOf(listData, size+1);
+    private void grow(int up){
+        listData = Arrays.copyOf(listData, size+up);
+    }
+    public void length(){
+        System.out.println(listData.length);
     }
 }

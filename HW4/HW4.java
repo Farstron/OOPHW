@@ -9,5 +9,8 @@ public class HW4 {
         myList.printList();
         myList.addByIndex("argtb", -3);
         myList.printList();
+        myList.length();
+        myList.add(ar);
+        myList.printList();
     }
 }
