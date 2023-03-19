@@ -1,5 +1,9 @@
 package HW3;
 
+import HW3.Figures.Circle;
+import HW3.Figures.Rectangle;
+import HW3.Figures.Square;
+import HW3.Figures.Triangle;
 import HW3.Figures.Base.Figure;
 import HW3.Figures.Base.Lengthable;
 import HW3.Figures.Base.Perimeterable;
@@ -28,6 +32,29 @@ public class FigureCollection {
         }
     }
     public void addFigure(Figure newFigure){
+        // if(newFigure instanceof Circle){
+        //     Circle circle = (Circle)newFigure;
+        //     if (circle.radius > 0) figureList.add(circle);
+        //     else System.out.println("Радиус меньше нуля");
+        // }
+        // if(newFigure instanceof Triangle){
+        //     Triangle triangle = (Triangle)newFigure;
+        //     figureList.add(triangle);
+        //     // if (triangle.radius > 0) 
+        //     // else System.out.println("Радиус меньше нуля");
+        // }
+        // if(newFigure instanceof Square){
+        //     Square square = (Square)newFigure;
+        //     figureList.add(square);
+        //     // if (square.radius > 0) 
+        //     // else System.out.println("Радиус меньше нуля");
+        // }
+        // if(newFigure instanceof Rectangle){
+        //     Rectangle rectangle = (Rectangle)newFigure;
+        //     figureList.add(rectangle);
+        //     // if (rectangle.radius > 0) 
+        //     // else System.out.println("Радиус меньше нуля");
+        // }
         figureList.add(newFigure);
     }
     public void delFigure(int figureIndex){

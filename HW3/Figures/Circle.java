@@ -8,8 +8,9 @@ public class Circle implements Figure, Lengthable{
     public Circle(int radius){
         this.radius = radius;
         // try{
-        //     if (radius <= 0)
+        //     if (radius <= 0){
         //         throw new Exception("Радиус должен быть больше нуля");
+        //     }
         //     else{
                 
         //     }
