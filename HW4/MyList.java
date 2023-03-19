@@ -52,7 +52,6 @@ public class MyList<T> {
         }
         System.out.println();
     }
-    // ADD block
     /** Добавление элемента в конец массива
      * @param initElement экземпляр класса T
      */
@@ -86,7 +85,7 @@ public class MyList<T> {
             Object[] temp = Arrays.copyOfRange(listData,index,this.size);
             listData[index] = initElement;
             grow(1);
-            merge(Arrays.copyOfRange(listData,0,index+1), temp);
+            this.listData = mergeCollection(Arrays.copyOfRange(listData,0,index+1), temp);
         }
     }
     /** Добавление коллекции по индексу. Вставка происходит по первому элементу коллекции.
@@ -110,20 +109,6 @@ public class MyList<T> {
             this.listData = mergeCollection(mergeCollection(Arrays.copyOfRange(listData,0,index),initCollection), temp);
         }
     }
-    /**
-     * @param array1
-     * @param array2
-     */
-    public void merge(Object[] array1, Object[] array2){
-        for (int i= 0; i < array1.length;i++){
-            this.listData[i] = array1[i];
-        }
-        for (int i = 0; i < array2.length; i++){
-            this.listData[i+array1.length] = array2[i];
-        }
-        this.size = array1.length + array2.length;
-    }
-
     /** Слияние коллекций
      * @param array1 коллекция 1
      * @param array2 коллекция 2
@@ -140,6 +125,161 @@ public class MyList<T> {
         this.size = array1.length + array2.length;
         return resCollection;
     }
+    /** Удаление послнднего элемента*/
+    public void remove(){
+        if (size > 0){
+            this.size --;
+            this.listData=Arrays.copyOfRange(listData,0,size);
+        }else{
+            throw new IllegalArgumentException("Array Is Empty");
+        } 
+    }
+    /** Удаление элемента по индексу
+     * <pre>
+     * Правила удаления:
+     * Индекс > длины массива -> элемент удаляется из конеца массива
+     * Индекс < 0 -> элемент удаляется с конца массива по индексу (длина массива + индекс)
+     * Индекс в пределах длины массива -> элемент удаляется по индексу
+     * </pre>
+     * @param index индекс в массиве
+     */
+    public void removeByIndex(int index){
+        if (index > size) {
+            remove();
+        }
+        else{
+            if (index < 0) index = this.size+index;
+            this.listData = mergeCollection(Arrays.copyOfRange(listData,0,index), Arrays.copyOfRange(listData,index+1,this.size));
+        }
+    }
+    /**Удаление элементов по массиву индексов
+     * <pre>
+     * Правила удаления:
+     * Индекс > длины массива -> элемент удаляется из конеца массива
+     * Индекс < 0 -> элемент удаляется с конца массива по индексу (длина массива + индекс)
+     * Индекс в пределах длины массива -> элемент удаляется по индексу
+     * </pre>
+     * @param indexArray массив индексов
+     */
+    public void removeByIndex(int[] indexArray){
+        for(int i : indexArray) removeByIndex(i);
+    }
+    /**Удаление всех заданных элементов
+     * @param element заданный элемент
+     */
+    public void removeAllElements(T element){
+        for (int i = 0; i < this.size; i++){
+            if (this.listData[i].equals(element)) {
+                removeByIndex(i);
+                i--;
+            }
+        }
+    }
+    /**Поиск минимального элемента массива. Если это массив строк, то находит строку с минимальной длиной.
+     * @return Минимальный элемент
+     */
+    public Object min(){
+        Object min = this.listData[0];
+        for (Object e : listData){
+            if ((e instanceof Integer) || (e instanceof Double) || (e instanceof Float))
+                if ((Integer)e < (Integer)min)
+                    min = e;
+            if (e instanceof String)
+                if (e.toString().length() < min.toString().length())
+                    min = e;
+        }
+        return min;
+    }
+    /**Поиск максимального элемента массива. Если это массив строк, то находит строку с максимального длиной.
+     * @return Максимальный элемент
+     */
+    public Object max(){
+        Object max = this.listData[0];
+        for (Object e : listData){
+            if ((e instanceof Integer) || (e instanceof Double) || (e instanceof Float))
+                if ((Integer)e > (Integer)max)
+                max = e;
+            if (e instanceof String)
+                if (e.toString().length() > max.toString().length())
+                max = e;
+        }
+        return max;
+    }
+    /**Сумма элементов массива.
+     * @return Сумма элементов массива
+     */
+    public Object sum(){
+        if (listData[0] instanceof Integer){
+            int sum = 0;
+            for(Object e : listData)
+                sum+=(Integer)e;
+            return sum;
+        }else
+        if (listData[0] instanceof Double){
+            Double sum = 0.0;
+            for(Object e : listData)
+                sum+=(Double)e;
+            return sum;
+        }else
+        if (listData[0] instanceof Float){
+            Float sum = 0F;
+            for(Object e : listData)
+                sum+=(Float)e;
+            return sum;
+        }else
+        return null;
+    }
+    /**Произведение элементов массива.
+     * @return Произведение элементов массива
+     */
+    public Object multiplication(){
+        if (listData[0] instanceof Integer){
+            int sum = 1;
+            for(Object e : listData)
+                sum*=(Integer)e;
+            return sum;
+        }else
+        if (listData[0] instanceof Double){
+            Double sum = 1.0;
+            for(Object e : listData)
+                sum*=(Double)e;
+            return sum;
+        }else
+        if (listData[0] instanceof Float){
+            Float sum = 1F;
+            for(Object e : listData)
+                sum*=(Float)e;
+            return sum;
+        }else
+        return null;
+    }
+    /**Поиск последнего вхождения элемента
+     * @param element искомый элемент
+     * @return индекс последнего вхождения
+     */
+    public int findIndex(Object element){
+        int index = -1;
+        for (int i = 0; i < size; i++){
+            if (this.listData[i].equals(element)){
+                index = i;
+            }
+        }
+        return index;
+    }
+    /**Поиск элемента
+     * @param element искомый элемент
+     * @return 
+     */
+    public boolean find(Object element){
+        boolean find = false;
+        for (int i = 0; i < size; i++){
+            if (this.listData[i].equals(element)){
+                find = true;
+                break;
+            }
+        }
+        return find;
+    }
     /** Увеличение длины массива на указанную величину
      * @param up величина на которую нужно удлинить массив
      */
@@ -148,6 +288,6 @@ public class MyList<T> {
     }
     /** Вывод в консоль длины массива*/
     public void length(){
-        System.out.println(listData.length);
+        System.out.println(size);
     }
 }
