@@ -30,7 +30,6 @@ public class MyList<T> {
         }else {
             throw new IllegalArgumentException("Illegal Size: "+ initSize);
         }
-        
     }
     /**
      * @param initCollection
@@ -181,8 +180,14 @@ public class MyList<T> {
     public Object min(){
         Object min = this.listData[0];
         for (Object e : listData){
-            if ((e instanceof Integer) || (e instanceof Double) || (e instanceof Float))
+           if (e instanceof Integer)
                 if ((Integer)e < (Integer)min)
+                    min = e;
+            if (e instanceof Double)
+                if ((Double)e < (Double)min)
+                    min = e;
+            if (e instanceof Float)
+                if ((Float)e < (Float)min)
                     min = e;
             if (e instanceof String)
                 if (e.toString().length() < min.toString().length())
@@ -196,12 +201,18 @@ public class MyList<T> {
     public Object max(){
         Object max = this.listData[0];
         for (Object e : listData){
-            if ((e instanceof Integer) || (e instanceof Double) || (e instanceof Float))
+            if (e instanceof Integer)
                 if ((Integer)e > (Integer)max)
-                max = e;
+                    max = e;
+            if (e instanceof Double)
+                if ((Double)e > (Double)max)
+                    max = e;
+            if (e instanceof Float)
+                if ((Float)e > (Float)max)
+                    max = e;
             if (e instanceof String)
                 if (e.toString().length() > max.toString().length())
-                max = e;
+                    max = e;
         }
         return max;
     }
@@ -280,6 +291,20 @@ public class MyList<T> {
         }
         return find;
     }
+    /**Получение элемента массива по индексу
+     * @param index индекс элемента
+     * @return элемент из массива
+     */
+    public Object getElementByIndex(int index){
+        return listData[index];
+    }
+    /**Задание значения элементу массива с заданным индексом
+     * @param index индекс элемента
+     * @param e новое значение
+     */
+    public void setElementByIndex(int index, Object e){
+        listData[index] = e;
+    }
     /** Увеличение длины массива на указанную величину
      * @param up величина на которую нужно удлинить массив
      */
@@ -289,5 +314,147 @@ public class MyList<T> {
     /** Вывод в консоль длины массива*/
     public void length(){
         System.out.println(size);
+    }
+    /**Пузырьковая сортировка*/
+    public void bubbleSort() {
+        for (int i = 0; i < size - 1; i++) {
+            if (listData[0] instanceof Integer)
+                for (int j = 0; j < size - i - 1; j++) {
+                    if ((Integer)listData[j] > (Integer)listData[j + 1]) {
+                        int tmp = (Integer)listData[j];
+                        listData[j] = listData[j + 1];
+                        listData[j + 1] = tmp;
+                    }
+                }
+            if (listData[0] instanceof Double)
+                for (int j = 0; j < size - i - 1; j++) {
+                    if ((Double)listData[j] > (Double)listData[j + 1]) {
+                        Double tmp = (Double)listData[j];
+                        listData[j] = listData[j + 1];
+                        listData[j + 1] = tmp;
+                    }
+                }
+            if (listData[0] instanceof Float)
+                for (int j = 0; j < size - i - 1; j++) {
+                    if ((Float)listData[j] > (Float)listData[j + 1]) {
+                        Float tmp = (Float)listData[j];
+                        listData[j] = listData[j + 1];
+                        listData[j + 1] = tmp;
+                    }
+                }
+            if (listData[0] instanceof String)
+                for (int j = 0; j < size - i - 1; j++) {
+                    if (listData[j].toString().length() > listData[j + 1].toString().length()) {
+                        String tmp = (String)listData[j];
+                        listData[j] = listData[j + 1];
+                        listData[j + 1] = tmp;
+                    }
+                }
+        }
+    }
+    /**Сортировка простыми вставками*/
+    public void insertionSort(){
+        if (listData[0] instanceof Integer)
+            for (int left = 0; left < size; left++) {
+                int value = (Integer)listData[left];
+                int i = left - 1;
+                for (; i >= 0; i--) {
+                    if (value < (Integer)listData[i]) {
+                        listData[i + 1] = listData[i];
+                    } else {
+                        break;
+                    }
+                }
+                listData[i + 1] = value;
+            }
+        if (listData[0] instanceof Double)
+            for (int left = 0; left < size; left++) {
+                Double value = (Double)listData[left];
+                int i = left - 1;
+                for (; i >= 0; i--) {
+                    if (value < (Double)listData[i]) {
+                        listData[i + 1] = listData[i];
+                    } else {
+                        break;
+                    }
+                }
+                listData[i + 1] = value;
+            }
+        if (listData[0] instanceof Float)
+            for (int left = 0; left < size; left++) {
+                Float value = (Float)listData[left];
+                int i = left - 1;
+                for (; i >= 0; i--) {
+                    if (value < (Float)listData[i]) {
+                        listData[i + 1] = listData[i];
+                    } else {
+                        break;
+                    }
+                }
+                listData[i + 1] = value;
+            }
+        if (listData[0] instanceof String)
+            for (int left = 0; left < size; left++) {
+                String value = listData[left].toString();
+                int i = left - 1;
+                for (; i >= 0; i--) {
+                    if (value.length() < listData[i].toString().length()) {
+                        listData[i + 1] = listData[i];
+                    } else {
+                        break;
+                    }
+                }
+                listData[i + 1] = value;
+            }
+        
+    }
+    /**Сортировка простым выбором*/
+    public void selectionSort(){
+        if (listData[0] instanceof Integer)
+            for (int left = 0; left < size; left++) {
+                int minInd = left;
+                for (int i = left; i < size; i++) {
+                    if ((Integer)listData[i] < (Integer)listData[minInd]) {
+                        minInd = i;
+                    }
+                }
+                swap(listData, left, minInd);
+            }
+        if (listData[0] instanceof Double)
+            for (int left = 0; left < size; left++) {
+                int minInd = left;
+                for (int i = left; i < size; i++) {
+                    if ((Double)listData[i] < (Double)listData[minInd]) {
+                        minInd = i;
+                    }
+                }
+                swap(listData, left, minInd);
+            }
+        if (listData[0] instanceof Float)
+            for (int left = 0; left < size; left++) {
+                int minInd = left;
+                for (int i = left; i < size; i++) {
+                    if ((Float)listData[i] < (Float)listData[minInd]) {
+                        minInd = i;
+                    }
+                }
+                swap(listData, left, minInd);
+            }
+        if (listData[0] instanceof String)
+            for (int left = 0; left < size; left++) {
+                int minInd = left;
+                for (int i = left; i < size; i++) {
+                    if (listData[i].toString().length() < listData[minInd].toString().length()) {
+                        minInd = i;
+                    }
+                }
+                swap(listData, left, minInd);
+            }
+        
+    }
+    private void swap(Object arr[], int i, int j){
+        Object temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
     }
 }
