@@ -1,23 +1,17 @@
 package HW5_RE;
-
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-
 public class EmployeeView extends JFrame {
     private JTextField idField;
     private JTextField nameField;
     private JTextField positionField;
     private JTextField salaryField;
-
     private JButton addButton;
     private JButton deleteButton;
     private JButton updateButton;
-
     private JList<Employee> employeeList;
-
     private DefaultListModel<Employee> listModel;
-
     public EmployeeView() {
         this.setTitle("Employee Management System");
         this.setSize(500, 350);
@@ -64,11 +58,9 @@ public class EmployeeView extends JFrame {
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setVisible(true);
     }
-
     public int getSelectedEmployeeId() {
         return employeeList.getSelectedValue().getId();
     }
-
     public Employee getEmployeeInputData() {
         int id = Integer.parseInt(idField.getText());
         String name = nameField.getText();
@@ -77,22 +69,18 @@ public class EmployeeView extends JFrame {
 
         return new Employee(id, name, position, salary);
     }
-
     public void setEmployeeList(Employee[] employees) {
         listModel.clear();
         for (Employee emp : employees) {
             listModel.addElement(emp);
         }
     }
-
     public void setAddActionListener(ActionListener listener) {
         addButton.addActionListener(listener);
     }
-
     public void setDeleteActionListener(ActionListener listener) {
         deleteButton.addActionListener(listener);
     }
-
     public void setUpdateActionListener(ActionListener listener) {
         updateButton.addActionListener(listener);
     }
